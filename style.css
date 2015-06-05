@@ -1,0 +1,122 @@
+html {
+	font-family: Ubuntu;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+html {
+
+	display: table;
+}
+
+body {
+	display: table-cell;
+    vertical-align: middle;
+}
+
+h1 {
+	color: #776e65;
+	font-size: 40pt;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	float: left;
+	line-height: 60px;
+}
+
+main {
+	width: 40%;
+	min-width: 450px;
+	margin: 0px auto;
+	padding: 10px 20px;
+}
+
+main > * {
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+header {
+	overflow: auto;
+	padding: 0;
+}
+
+.button {
+	background-color: yellow;
+	display: inline-block;
+	float: right;
+	height: 40pt;
+	line-height: 40pt;
+	padding: 0px 5px;
+	margin-left: 10px;
+	min-width: 60px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+#newGameButton {
+	cursor: pointer;
+}
+
+#game {
+	position: relative;
+	overflow: auto;
+	background-color: #BBADA0;
+	border-radius: 10px;
+}
+
+footer {
+	margin-top: 10px;
+	padding: 0;
+}
+
+footer p {
+	margin: 0px;
+}
+
+.box {
+	display: inline-block;
+	height: 20%;
+	width: 20%;
+	background-color: red;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+	h1 {
+		font-size: 66pt;
+		line-height: 66pt;
+	}
+
+	div, p, a {
+		font-size: large;
+	}
+
+	.button {
+		margin-top: 6pt;
+		height: 50pt;
+		line-height: 50pt;
+	}
+}
+
+.background-grid-row {
+	width: 100%;
+	height: 20%;
+}
+
+.background-grid-box {
+	width: 20%;
+	height: 100%;
+	background-color: #CDC1B4;
+	margin-left: 4%;
+	margin-top: 4%;	
+	float: left;
+	border-radius: 5%;
+}
