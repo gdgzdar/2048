@@ -53,7 +53,7 @@ function isOver() {
             }
 		}
     }
-    returns true;
+    return true;
 }
 
 
