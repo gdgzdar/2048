@@ -1,13 +1,29 @@
-function newGame() {
-	alert("newGame button clicked");
+function newGameButtonClick() {
+	// alert("newGame button clicked"); // for testing purposes only
+    newGame();
 }
 
 function move(direction) {
-
-	//alert(direction); //for testing
+	//alert(direction); //for testing purposes only
 
 	/ directions: left = 37, up = 38, right = 39, down = 40 /
-
+    switch(direction) {
+        case 37:
+            moveLeft();
+            break;
+            
+        case 38:
+            moveUp();
+            break;
+            
+        case 39:
+            moveRight();
+            break;
+            
+        case 40:
+            moveDown();
+            break;
+    }
 }
 
 $(function(){
