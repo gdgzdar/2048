@@ -1,6 +1,6 @@
 function newGameButtonClick() {
-	// alert("newGame button clicked"); // for testing purposes only
-    newGame();
+	alert("newGame button clicked"); // for testing purposes only
+    //newGame();
 }
 
 function move(direction) {
@@ -40,7 +40,7 @@ $(function(){
 // 	var options = {
 //   		touchAction: "pan-x"
 // 	};
-// 	var mc = new Hammer(document.getElementById('game'), options);
+// 	var mc = new Hammer(document.getElementById('game-field'), options);
 // 	mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL});
 
 // 	mc.on("swipeleft", function(ev) {

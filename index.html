@@ -16,58 +16,39 @@
 
 	</head>
 
-	<body id="body">
-
-		<main>
-
-			<header>
-				<h1>2048</h1>
-				<div class="button">score:</div>
-				<div class="button" onClick="newGame()" id="newGameButton">new</div>
-			</header>
-
-			<section id="game">
-				<div class="background-grid-row">
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-				</div>
-				
-				<div class="background-grid-row">
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-				</div>
-				
-				<div class="background-grid-row">
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-				</div>
-				
-				<div class="background-grid-row">
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-					<div class="background-grid-box"></div>
-				</div>
-
-
-			</section>
-
-			<footer>
-				<a href="">Project on GitHub</a>
+	<body>
+		<section id="main-content">
+			<div id="game-field" class="square column box">
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+			
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+			
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+			
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+				<div class="background-grid-box box"></div>
+			</div>
+			<div class="column">
+				<button id="new-game-button" class="box" onclick="newGameButtonClick()">New Game</button>
+				<div id="score" class="button-like box">score<div id="score-inner-value"></div></div>
+				<div id="best" class="button-like box">best<div  id="best-inner-value"></div></div>
+				<p><a href="">Project on GitHub</a></p>
 				<p>Made by Matěj Horák and Marek Kadlčík, 2015</p>
 				<p>No rights reserved</p>
-			</footer>
-
-		</main>
+			</div>
+		</section>
 
 	</body>
-
-	<script type="text/javascript" src="./displaying.js"></script>
 
 </html>
