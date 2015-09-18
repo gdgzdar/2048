@@ -5,17 +5,43 @@ var gameField = [   [   [0, true], [0, true], [0, true], [0, true]  ],
 var score = 0;
 var targetNumber = 2048;
 var node = document.getElementById('gameBody'); // Get HTML element
+const number = 0; // Not a good name for variable, is it?
+const state = 1; // If a tile can be modified...
+
+addCell();
+addCell();
+
+addCell();
 
 addCell();
 
 
 function moveUp() {
+    for (var i = 1; i < 4; i++) { // This loop starts on the second row and goes down...
+    	// dafuq is going on here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    	alert(i);
+        for (var j = 0; j < gameField[i].length; i++) { // This loop starts on the first column and goes right...
+        	for (var k = i; k > 0; k--) {
+        		var alongsideTile = gameField[k - 1] [j];
+		    	var movedTile = gameField[k] [j];
+		        if (alongsideTile[state] && (alongsideTile[number] === 0 ||  alongsideTile[number] === movedTile[number])) { // If can be merged...
+		        	alongsideTile[number] += movedTile[number];
+		        	alongsideTile[state] = false;
+		        	movedTile[number] = 0;
+	        	} else {
+	        		break;
+	        	}
+        	}
+        	
+        }
+
+        
+    }
 
 }
 
 
 function moveDown() {
-
 }
 
 
