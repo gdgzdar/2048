@@ -1,43 +1,38 @@
-var gameField = [   [   [0, true], [0, true], [0, true], [0, true]  ],
-                    [   [0, true], [0, true], [0, true], [0, true]  ],
-                    [   [0, true], [0, true], [0, true], [0, true]  ],
-                    [   [0, true], [0, true], [0, true], [0, true]  ]   ];
+var gameField = [   [   [0, true], [0, true], [0, true], [2, true]  ],
+                    [   [0, true], [0, true], [0, true], [2, true]  ],
+                    [   [0, true], [0, true], [0, true], [2, true]  ],
+                    [   [0, true], [0, true], [0, true], [2, true]  ]   ];
 var score = 0;
 var targetNumber = 2048;
 var node = document.getElementById('gameBody'); // Get HTML element
 const number = 0; // Not a good name for variable, is it?
 const state = 1; // If a tile can be modified...
 
-addCell();
-addCell();
-
-addCell();
-
-addCell();
-
 
 function moveUp() {
-    for (var i = 1; i < 4; i++) { // This loop starts on the second row and goes down...
-    	// dafuq is going on here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-    	alert(i);
-        for (var j = 0; j < gameField[i].length; i++) { // This loop starts on the first column and goes right...
+    for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
+        for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
         	for (var k = i; k > 0; k--) {
         		var alongsideTile = gameField[k - 1] [j];
 		    	var movedTile = gameField[k] [j];
-		        if (alongsideTile[state] && (alongsideTile[number] === 0 ||  alongsideTile[number] === movedTile[number])) { // If can be merged...
-		        	alongsideTile[number] += movedTile[number];
-		        	alongsideTile[state] = false;
-		        	movedTile[number] = 0;
-	        	} else {
-	        		break;
-	        	}
+
+                if (alongsideTile[state]) { // If can be merged...
+                    if (alongsideTile[number] === 0) { // if the alongside tile is empty
+                        alongsideTile[number] = movedTile[number];
+
+                    } else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
+                        alongsideTile[state] = false;
+                        alongsideTile[number] *= 2;
+                    }
+
+                    movedTile[number] = 0;
+                } else { // If cannot be merged
+                    break;
+                }
         	}
-        	
         }
-
-        
     }
-
+    writeToDocument();
 }
 
 
@@ -143,9 +138,11 @@ function writeToDocument() {
     // Write game field in correct format
     for (index = 0; index < gameField.length; index++) {
         for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
-            node.innerHTML += gameField[index][insiderIndex][0] + " , ";
+            node.innerHTML += gameField[index][insiderIndex][0] + '(' + gameField[index][insiderIndex][1] + ") , ";
         }
-        node.innerHTML += gameField[index][gameField[index].length-1][0] + "</br>";
+        node.innerHTML += gameField[index][gameField[index].length-1][0] + '(' + gameField[index][insiderIndex][1] + ")</br>";
     }
 
 }
+
+writeToDocument();
