@@ -74,12 +74,58 @@ function moveDown() {
 
 
 function moveLeft() {
+	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
+		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+			for (var k = i; k > 0; k--) {
+				var alongsideTile = gameField [j][k - 1]; // same as moveUp but swapped indexes
+				var movedTile = gameField[j][k] ; // same as moveUp but swapped indexes
 
+				if (alongsideTile[state]) { // If can be merged...
+					if (alongsideTile[number] === 0) { // if the alongside tile is empty
+						alongsideTile[number] = movedTile[number];
+
+					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
+						alongsideTile[state] = false;
+						alongsideTile[number] *= 2;
+					}
+
+					movedTile[number] = 0;
+				} else { // If cannot be merged
+					break;
+				}
+			}
+		}
+	}
+	cleanStates();
+	writeToDocument();
 }
 
 
 function moveRight() {
+	for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
+		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+			for (var k = i; k < gameField.length - 1; k++) {
+				var alongsideTile = gameField[j][k + 1]; // same as moveDown but swapped indexes
+				var movedTile = gameField[j][k]; // same as moveDown but swapped indexes
 
+				if (alongsideTile[state]) { // If can be merged...
+					if (alongsideTile[number] === 0) { // if the alongside tile is empty
+						alongsideTile[number] = movedTile[number];
+
+					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
+						alongsideTile[state] = false;
+						alongsideTile[number] *= 2;
+					}
+
+					movedTile[number] = 0;
+				} else { // If cannot be merged
+					break;
+				}
+			}
+		}
+	}
+	cleanStates();
+	writeToDocument();
 }
 
 
