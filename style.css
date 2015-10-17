@@ -27,21 +27,25 @@
 
 /* layout - mobile first */
 	#main-content {
-		width: 80vw;
+		width: 90vw;
 	}
 
 	.column {
-		width: 80vw;
+		width: 90vw;
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	#game-field {
-		height: 80vw;
+		height: 90vw;
+		max-height: 500px;
 	}
 /* end of layout - mobile first*/
 
 /* boxes */
 	.box {
-		border-radius: 0.5em;
+		border-radius: 0.2em;
 		overflow: hidden;
 	}
 /* end of boxes */
@@ -50,8 +54,8 @@
 	button, .button-like {
  		background-color: #bbada0;
  		border: none;
- 		height: 4em;
- 		line-height: 4em;
+ 		height: 2.5em;
+ 		line-height: 2.5em;
  		margin-bottom: 4%;
  		width: 100%;
  		font-size: inherit;
@@ -98,7 +102,7 @@
 
 /* responsive */
 
-	@media only screen and (orientation: landscape)  {
+	@media screen and (orientation: landscape) and (min-width: 990px)  {
 		
 		html {
 			display: table;
@@ -126,21 +130,6 @@
 
 		#game-field {
 			height: 32vw;
-		}
-	}
-
-	@media only screen and (orientation: landscape) and (max-width: 800px)  {
-
-		#main-content {
-			width: 86vw;
-		}
-
-		.column {
-			width: 40vw;
-		}
-
-		#game-field {
-			height: 40vw;
 		}
 	}
 /* end of responsive 
