@@ -1,7 +1,7 @@
-var gameField = [   [   [0, true], [0, true], [0, true], [2, true]  ],
-					[   [0, true], [0, true], [0, true], [2, true]  ],
-					[   [0, true], [0, true], [0, true], [2, true]  ],
-					[   [0, true], [0, true], [0, true], [2, true]  ]   ];
+var gameField = [   [   [0, true], [0, true], [0, true], [0, true]  ],
+					[   [0, true], [0, true], [0, true], [0, true]  ],
+					[   [0, true], [0, true], [0, true], [0, true]  ],
+					[   [8, true], [4, true], [4, true], [2, true]  ]   ];
 var score = 0;
 var targetNumber = 2048;
 var node = document.getElementById('gameBody'); // Get HTML element
@@ -20,19 +20,24 @@ function cleanStates() {
 
 // Move tile, merge and return boolean if the merge is possible
 function moveStep(alongsideTile, movedTile) {
-	if (alongsideTile[state]) { // If can be merged...
+
+	if (alongsideTile[state] && movedTile[state]) { // If can be merged...
 		if (alongsideTile[number] === 0) { // if the alongside tile is empty
 			alongsideTile[number] = movedTile[number];
+			movedTile[number] = 0;
 
 		} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
 			alongsideTile[state] = false;
 			alongsideTile[number] *= 2;
+			movedTile[number] = 0;
+			
 		}
 
-		movedTile[number] = 0;
-		return true; // can be merged
+		//alert(alongsideTile[state] + ", " +  alongsideTile[number]);
+
+		return true; // can continue trying to move
 	}
-	return false; // cannot be merged
+	return false; // cannot continue trying to move
 }
 
 function moveUp() {
@@ -40,14 +45,15 @@ function moveUp() {
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k > 0; k--) {
 
-				if (!moveStep(gameField[k - 1][j], gameField[k][j])) {
+				if (!moveStep(gameField[k - 1] [j], gameField[k] [j])) {
 					break;
 				}
+
+
 
 			}
 		}
 	}
-	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -65,7 +71,6 @@ function moveDown() {
 			}
 		}
 	}
-	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -75,7 +80,7 @@ function moveLeft() {
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k > 0; k--) {
-
+				writeToDocument();
 				if (!moveStep(gameField[j][k - 1], gameField[j][k])) {
 					break;
 				}
@@ -83,7 +88,6 @@ function moveLeft() {
 			}
 		}
 	}
-	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -101,7 +105,6 @@ function moveRight() {
 			}
 		}
 	}
-	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -181,9 +184,10 @@ function addCell() {
 	var positionY = emptyPositions[randomPositionIndex][0]; // Row of changed cell
 	var positionX = emptyPositions[randomPositionIndex][1]; // Column of changed cell
 
-	gameField[positionY][positionX][0] = cellToAdd; // Add
 
+	gameField[positionY][positionX][0] = cellToAdd; // Add
 	writeToDocument(); // Refresh displayed gamefield
+
 }
 
 
@@ -195,9 +199,9 @@ function writeToDocument() {
 	// Write game field in correct format
 	for (index = 0; index < gameField.length; index++) {
 		for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
-			node.innerHTML += gameField[index][insiderIndex][0] + " , ";
+			node.innerHTML += gameField[index][insiderIndex][number] + " ,"  //+ "(" + gameField[index][insiderIndex][state] + ") , ";
 		}
-		node.innerHTML += gameField[index][gameField[index].length-1][0]+ "</br>";
+		node.innerHTML += gameField[index][gameField[index].length-1][number]+ "</br>";
 	}
 
 }
