@@ -17,29 +17,37 @@ function cleanStates() {
 	}
 }
 
+
+// Move tile, merge and return boolean if the merge is possible
+function moveStep(alongsideTile, movedTile) {
+	if (alongsideTile[state]) { // If can be merged...
+		if (alongsideTile[number] === 0) { // if the alongside tile is empty
+			alongsideTile[number] = movedTile[number];
+
+		} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
+			alongsideTile[state] = false;
+			alongsideTile[number] *= 2;
+		}
+
+		movedTile[number] = 0;
+		return true; // can be merged
+	}
+	return false; // cannot be merged
+}
+
 function moveUp() {
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k > 0; k--) {
-				var alongsideTile = gameField[k - 1] [j];
-				var movedTile = gameField[k] [j];
 
-				if (alongsideTile[state]) { // If can be merged...
-					if (alongsideTile[number] === 0) { // if the alongside tile is empty
-						alongsideTile[number] = movedTile[number];
-
-					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
-						alongsideTile[state] = false;
-						alongsideTile[number] *= 2;
-					}
-
-					movedTile[number] = 0;
-				} else { // If cannot be merged
+				if (!moveStep(gameField[k - 1][j], gameField[k][j])) {
 					break;
 				}
+
 			}
 		}
 	}
+	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -49,25 +57,15 @@ function moveDown() {
 	for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k < gameField.length - 1; k++) {
-				var alongsideTile = gameField[k + 1] [j];
-				var movedTile = gameField[k] [j];
 
-				if (alongsideTile[state]) { // If can be merged...
-					if (alongsideTile[number] === 0) { // if the alongside tile is empty
-						alongsideTile[number] = movedTile[number];
-
-					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
-						alongsideTile[state] = false;
-						alongsideTile[number] *= 2;
-					}
-
-					movedTile[number] = 0;
-				} else { // If cannot be merged
+				if (!moveStep(gameField[k + 1][j], gameField[k][j])) {
 					break;
 				}
+
 			}
 		}
 	}
+	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -77,25 +75,15 @@ function moveLeft() {
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k > 0; k--) {
-				var alongsideTile = gameField [j][k - 1]; // same as moveUp but swapped indexes
-				var movedTile = gameField[j][k] ; // same as moveUp but swapped indexes
 
-				if (alongsideTile[state]) { // If can be merged...
-					if (alongsideTile[number] === 0) { // if the alongside tile is empty
-						alongsideTile[number] = movedTile[number];
-
-					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
-						alongsideTile[state] = false;
-						alongsideTile[number] *= 2;
-					}
-
-					movedTile[number] = 0;
-				} else { // If cannot be merged
+				if (!moveStep(gameField[j][k - 1], gameField[j][k])) {
 					break;
 				}
+
 			}
 		}
 	}
+	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -105,25 +93,15 @@ function moveRight() {
 	for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			for (var k = i; k < gameField.length - 1; k++) {
-				var alongsideTile = gameField[j][k + 1]; // same as moveDown but swapped indexes
-				var movedTile = gameField[j][k]; // same as moveDown but swapped indexes
 
-				if (alongsideTile[state]) { // If can be merged...
-					if (alongsideTile[number] === 0) { // if the alongside tile is empty
-						alongsideTile[number] = movedTile[number];
-
-					} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
-						alongsideTile[state] = false;
-						alongsideTile[number] *= 2;
-					}
-
-					movedTile[number] = 0;
-				} else { // If cannot be merged
+				if (!moveStep(gameField[j][k + 1], gameField[j][k])) {
 					break;
 				}
+
 			}
 		}
 	}
+	addCell();
 	cleanStates();
 	writeToDocument();
 }
@@ -182,13 +160,13 @@ function isOver() {
 }
 
 
-// Add new number into empty cell. 2 or 4...
+// Add new number into an empty cell. 2 or 4...
 function addCell() {
 
-	// Array of empty cells in gamefield
+	// Array of empty cells in the gamefield
 	var emptyPositions = [];
 
-	// Fill array with empty cells positions
+	// Fill an array with empty cells positions
 	for (index = 0; index < gameField.length; index++) {
 		for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
 			if (gameField[index][insiderIndex][0] == 0) {
