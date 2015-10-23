@@ -30,7 +30,7 @@ function moveStep(alongsideTile, movedTile) {
 			alongsideTile[state] = false;
 			alongsideTile[number] *= 2;
 			movedTile[number] = 0;
-			
+			score += alongsideTile[number];
 		}
 
 		//alert(alongsideTile[state] + ", " +  alongsideTile[number]);
