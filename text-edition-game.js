@@ -1,7 +1,7 @@
 var gameField = [   [   [0, true], [0, true], [0, true], [0, true]  ],
 					[   [0, true], [0, true], [0, true], [0, true]  ],
 					[   [0, true], [0, true], [0, true], [0, true]  ],
-					[   [8, true], [4, true], [4, true], [2, true]  ]   ];
+					[   [0, true], [0, true], [0, true], [0, true]  ]   ];
 var score = 0;
 var targetNumber = 2048;
 var node = document.getElementById('gameBody'); // Get HTML element
@@ -17,6 +17,17 @@ function cleanStates() {
 	}
 }
 
+function moveDone() {
+	cleanStates();
+	writeToDocument();
+	if (isWon()) {
+		alert("You win this game! :)");
+	} else if (isOver()) {
+		alert("You lose this game! :(");
+	} else {
+		addCell();
+	}
+}
 
 // Move tile, merge and return boolean if the merge is possible
 function moveStep(alongsideTile, movedTile) {
@@ -54,8 +65,7 @@ function moveUp() {
 			}
 		}
 	}
-	cleanStates();
-	writeToDocument();
+	moveDone();
 }
 
 
@@ -71,8 +81,7 @@ function moveDown() {
 			}
 		}
 	}
-	cleanStates();
-	writeToDocument();
+	moveDone();
 }
 
 
@@ -88,8 +97,7 @@ function moveLeft() {
 			}
 		}
 	}
-	cleanStates();
-	writeToDocument();
+	moveDone();
 }
 
 
@@ -105,8 +113,7 @@ function moveRight() {
 			}
 		}
 	}
-	cleanStates();
-	writeToDocument();
+	moveDone();
 }
 
 
@@ -206,4 +213,6 @@ function writeToDocument() {
 
 }
 
+addCell();
+addCell();
 writeToDocument();
