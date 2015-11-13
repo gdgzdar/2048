@@ -68,6 +68,10 @@
 		padding: 0 0 0 3%;
 	}
 
+	.button-like div {
+		display: inline-block;
+	}
+
 	.button-like:nth-child(2) {
 		float: right;
 	}
@@ -87,20 +91,36 @@
 /* game-field */
 	#game-field {
 		background-color: #bbada0;
-		margin-bottom: 4%;
+    	position: relative;
 	}
 
-	#game-field-background {
-		position: relative;
+	#game-field-background, #game-field-foreground {
+		position: absolute;
 		width: 100%;
 		height: 100%;
 	}
 
 	.background-grid-box {
 		background-color: #CDC1B4;
+	}
+
+	.background-grid-box, .cell {
 		position: absolute;
 		width: 20%;
 		height: 20%;
+	}
+
+	.cell {
+		background-color: #D2333E;
+		color: white;
+		text-align: center;
+	    display: table;
+	    transition: all .2s linear;
+	}
+
+	.cell span {
+		display: table-cell;
+	    vertical-align: middle;
 	}
 
 	.column-0 {

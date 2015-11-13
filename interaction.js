@@ -26,6 +26,7 @@ function move(direction) {
     }
 }
 
+
 $(function(){
 	$('html').keydown(function(e) {
 		move(e.which);
