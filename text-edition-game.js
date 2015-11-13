@@ -59,9 +59,7 @@ function moveUp() {
 				if (!moveStep(gameField[k - 1] [j], gameField[k] [j])) {
 					break;
 				}
-
-
-
+				
 			}
 		}
 	}

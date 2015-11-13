@@ -90,13 +90,49 @@
 		margin-bottom: 4%;
 	}
 
+	#game-field-background {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
 	.background-grid-box {
 		background-color: #CDC1B4;
-		margin-left: 4%;
-		margin-top: 4%;
+		position: absolute;
 		width: 20%;
 		height: 20%;
-		float: left;
+	}
+
+	.column-0 {
+		left: 4%;
+	}
+
+	.column-1 {
+		left: 28%;
+	}
+
+	.column-2 {
+		left: 52%;
+	}
+
+	.column-3 {
+		left: 76%;
+	}
+
+	.row-0 {
+		top: 4%;
+	}
+
+	.row-1 {
+		top: 28%;
+	}
+
+	.row-2 {
+		top: 52%;
+	}
+
+	.row-3 {
+		top: 76%;
 	}
 /* end of game-field */
 
