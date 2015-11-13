@@ -121,6 +121,10 @@ function newGame() {
 			gameField[index][insiderIndex][0] = 0;
 		}
 	}
+	var gameFieldElement = document.getElementById("game-field-foreground");
+	while (gameFieldElement.firstChild) {
+	    gameFieldElement.removeChild(gameFieldElement.firstChild);
+	}
 	score = 0;
 	refresh();
 }
