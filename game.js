@@ -4,7 +4,7 @@ var gameField = [   [   [0, true], [0, true], [0, true], [0, true]  ],
 					[   [0, true], [0, true], [0, true], [0, true]  ]   ];
 var score = 0;
 var targetNumber = 2048;
-var score_label = document.getElementById('score-inner-value'); // Get HTML element
+var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
 const number = 0; // Not a good name for variable, is it?
 const state = 1; // If a tile can be modified...
 
@@ -116,15 +116,12 @@ function moveRight() {
 
 // restart the game
 function newGame() {
-	// alert("some message");
 	for (index = 0; index < gameField.length; index++) {
 		for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
 			gameField[index][insiderIndex][0] = 0;
 		}
 	}
 	score = 0;
-
-	// do some code
 	refresh();
 }
 
@@ -190,12 +187,21 @@ function addCell() {
 
 
 	gameField[positionY][positionX][0] = cellToAdd; // Add
+
+	var cellWrapper = document.createElement("div");
+	var cellText = document.createElement("span");
+	cellText.innerHTML = cellToAdd;
+	cellWrapper.className = "cell box column-" + positionX + " row-" + positionY;
+	cellWrapper.appendChild(cellText);
+	document.getElementById("game-field-foreground").appendChild(cellWrapper);
+
 	refresh(); // Refresh displayed gamefield
 
 }
 
 function refresh() {
-    score_label.innerHTML = score; // Write score
+    scoreLabel.innerHTML = score; // Write score
 }
 
+addCell();
 refresh();

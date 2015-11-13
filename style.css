@@ -92,6 +92,7 @@
 	#game-field {
 		background-color: #bbada0;
     	position: relative;
+    	margin-bottom: 4%;
 	}
 
 	#game-field-background, #game-field-foreground {

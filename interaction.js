@@ -1,8 +1,3 @@
-function newGameButtonClick() {
-	alert("newGame button clicked"); // for testing purposes only
-    //newGame();
-}
-
 function move(direction) {
 	//alert(direction); //for testing purposes only
 
