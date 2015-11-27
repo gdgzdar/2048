@@ -121,7 +121,7 @@ function newGame() {
 			gameField[index][insiderIndex][0] = 0;
 		}
 	}
-	var gameFieldElement = document.getElementById("game-field-foreground");
+	var gameFieldElement = document.getElementById("game-field");
 	while (gameFieldElement.firstChild) {
 	    gameFieldElement.removeChild(gameFieldElement.firstChild);
 	}
@@ -197,7 +197,7 @@ function addCell() {
 	cellText.innerHTML = cellToAdd;
 	cellWrapper.className = "cell box column-" + positionX + " row-" + positionY;
 	cellWrapper.appendChild(cellText);
-	document.getElementById("game-field-foreground").appendChild(cellWrapper);
+	document.getElementById("game-field").appendChild(cellWrapper);
 
 	refresh(); // Refresh displayed gamefield
 
