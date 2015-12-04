@@ -62,10 +62,13 @@ function moveUp() {
 				}
 				steps++;
 			}
+
 			var newPosition = originalPosition - steps;
 			$(".cell.row-" + originalPosition + ".column-" + j).each(function() {
+
 				$(this).removeClass("row-" + originalPosition);
 				$(this).addClass("row-" + newPosition);
+				this.firstChild.innerHTML = gameField[newPosition][j][number];
 			});
 
 		}
