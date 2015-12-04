@@ -53,8 +53,12 @@ function moveStep(alongsideTile, movedTile) {
 function moveUp() {
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+			
+			// For HTML redraw
 			var originalPosition = i;
 			var steps = 0;
+
+			// This loop moving a tile as long as it's possible
 			for (var k = i; k > 0; k--) {
 
 				if (!moveStep(gameField[k - 1] [j], gameField[k] [j])) {
@@ -63,12 +67,14 @@ function moveUp() {
 				steps++;
 			}
 
+			// HTML redrawing
 			var newPosition = originalPosition - steps;
-			$(".cell.row-" + originalPosition + ".column-" + j).each(function() {
+			$(".cell.row-" + originalPosition + ".column-" + j).each(function() { // Find all elements at this position
 
+				// Change position of tile with animation and rewrite value in span
 				$(this).removeClass("row-" + originalPosition);
 				$(this).addClass("row-" + newPosition);
-				this.firstChild.innerHTML = gameField[newPosition][j][number];
+				this.firstChild.innerHTML = gameField[newPosition][j][number]; // Rewrite value in span
 			});
 
 		}
