@@ -53,13 +53,21 @@ function moveStep(alongsideTile, movedTile) {
 function moveUp() {
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+			var originalPosition = i;
+			var steps = 0;
 			for (var k = i; k > 0; k--) {
 
 				if (!moveStep(gameField[k - 1] [j], gameField[k] [j])) {
 					break;
 				}
-				
+				steps++;
 			}
+			var newPosition = originalPosition - steps;
+			$(".cell.row-" + originalPosition + ".column-" + j).each(function() {
+				$(this).removeClass("row-" + originalPosition);
+				$(this).addClass("row-" + newPosition);
+			});
+
 		}
 	}
 	moveDone();
