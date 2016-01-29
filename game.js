@@ -35,43 +35,50 @@ function moveStep(alongsideTile, movedTile) {
 		if (alongsideTile[number] === 0) { // if the alongside tile is empty
 			alongsideTile[number] = movedTile[number];
 			movedTile[number] = 0;
+			return true; // can continue trying to move
 
 		} else if (alongsideTile[number] === movedTile[number]) { // if the alongside tile and moved tile are same
 			alongsideTile[state] = false;
 			alongsideTile[number] *= 2;
 			movedTile[number] = 0;
 			score += alongsideTile[number];
+			return true; // can continue trying to move
 		}
 
-		//alert(alongsideTile[state] + ", " +  alongsideTile[number]);
-
-		return true; // can continue trying to move
+		 
 	}
 	return false; // cannot continue trying to move
 }
 
 function moveUp() {
+
 	for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
+
 		for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 			
 			// For HTML redraw
 			var originalPosition = i;
 			var steps = 0;
+			var originalValue;	// save value for merge HTML divs
 
 			// This loop moving a tile as long as it's possible
 			for (var k = i; k > 0; k--) {
-
+				originalValue = gameField[i - 1] [j][number];
 				if (!moveStep(gameField[k - 1] [j], gameField[k] [j])) {
 					break;
 				}
+
 				steps++;
 			}
 
 			// HTML redrawing
 			var newPosition = originalPosition - steps;
 			$(".cell.row-" + originalPosition + ".column-" + j).each(function() { // Find all elements at this position
-
 				// Change position of tile with animation and rewrite value in span
+				if (originalValue === gameField[newPosition][j][number]) { // If
+					$(".cell.row-" + newPosition + ".column-" + j).remove();
+				}
+
 				$(this).removeClass("row-" + originalPosition);
 				$(this).addClass("row-" + newPosition);
 				this.firstChild.innerHTML = gameField[newPosition][j][number]; // Rewrite value in span
@@ -80,6 +87,14 @@ function moveUp() {
 		}
 	}
 	moveDone();
+	node = document.getElementById("textField");
+	node.innerHTML = "";
+	for (index = 0; index < gameField.length; index++) {
+		for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
+			node.innerHTML += gameField[index][insiderIndex][number] + " ,"  //+ "(" + gameField[index][insiderIndex][state] + ") , ";
+		}
+		node.innerHTML += gameField[index][gameField[index].length-1][number]+ "</br>";
+	}
 }
 
 
