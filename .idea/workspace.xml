@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65ef3815-cabc-4951-a5df-219d84f47a00" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.js" afterPath="$PROJECT_DIR$/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.spec.js" afterPath="$PROJECT_DIR$/game.spec.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/text-edition-game.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/game.js" afterPath="$PROJECT_DIR$/js/game.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/game.spec.js" afterPath="$PROJECT_DIR$/js/game.spec.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hammer.js" afterPath="$PROJECT_DIR$/js/hammer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/interaction.js" afterPath="$PROJECT_DIR$/js/interaction.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="$PROJECT_DIR$/js/karma.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/karma/node_modules/graceful-fs/legacy-streams.js" afterPath="$PROJECT_DIR$/node_modules/karma/node_modules/graceful-fs/legacy-streams.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/karma/static/debug.html" afterPath="$PROJECT_DIR$/node_modules/karma/static/debug.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text-version.html" afterPath="$PROJECT_DIR$/text-version.html" />
     </list>
     <ignored path="2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,12 +34,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/game.js">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86478454">
-              <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
+              <folding>
+                <element signature="n#!!block;n#initiate#0" expanded="false" />
+                <element signature="n#!!block;n#newGame#0" expanded="false" />
+                <element signature="n#!!block;n#cleanStates#0" expanded="false" />
+                <element signature="n#!!block;n#displayFromGameField#0" expanded="false" />
+                <element signature="n#!!block;n#rewriteHTMLTextGameField#0" expanded="false" />
+                <element signature="n#!!block;n#moveDone#0" expanded="false" />
+                <element signature="n#!!block;n#canBeMerged#0" expanded="false" />
+                <element signature="n#!!block;n#moveStep#0" expanded="false" />
+                <element signature="n#!!block;n#deleteHTMLTile#0" expanded="false" />
+                <element signature="n#!!block;n#moveHTMLTile#0" expanded="false" />
+                <element signature="n#!!block;n#moveUp#0" expanded="false" />
+                <element signature="n#!!block;n#moveDown#0" expanded="false" />
+                <element signature="n#!!block;n#moveLeft#0" expanded="false" />
+                <element signature="n#!!block;n#moveRight#0" expanded="false" />
+                <element signature="n#!!block;n#refreshScore#0" expanded="false" />
+                <element signature="n#!!block;n#isInGameField#0" expanded="false" />
+                <element signature="n#!!block;n#isWon#0" expanded="false" />
+                <element signature="n#!!block;n#isOver#0" expanded="false" />
+                <element signature="n#!!block;n#getEmptyPositions#0" expanded="false" />
+                <element signature="n#!!block;n#addCellToPosition#0" expanded="false" />
+                <element signature="n#!!block;n#addRandomCell#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,15 +69,15 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.666667">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.886792">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/karma.conf.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -58,10 +89,30 @@
         </entry>
       </file>
       <file leaf-file-name="game.spec.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game.spec.js">
+        <entry file="file://$PROJECT_DIR$/js/game.spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hammer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/hammer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interaction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/interaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,9 +132,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/game.spec.js" />
         <option value="$PROJECT_DIR$/game.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -151,6 +202,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2048" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2048" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -166,6 +231,9 @@
     <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -526,7 +594,7 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="app" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="$PROJECT_DIR$/karma.conf.js">
+    <configuration default="false" name="app" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="$PROJECT_DIR$/js/karma.conf.js">
       <karma-package-dir value="$PROJECT_DIR$/node_modules/karma" />
       <envs />
       <method />
@@ -551,7 +619,7 @@
       <workItem from="1455808224333" duration="1525000" />
       <workItem from="1455809777919" duration="1729000" />
       <workItem from="1455811817961" duration="5737000" />
-      <workItem from="1456416377372" duration="2125000" />
+      <workItem from="1456416377372" duration="2878000" />
     </task>
     <servers />
   </component>
@@ -588,11 +656,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14190000" />
+    <option name="totallyTimeSpent" value="14943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1922" height="1051" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -600,10 +668,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26778242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18514644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26778242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18514644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11770833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11770833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -631,7 +699,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -639,11 +709,33 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/game.js">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#initiate#0" expanded="false" />
+            <element signature="n#!!block;n#newGame#0" expanded="false" />
+            <element signature="n#!!block;n#cleanStates#0" expanded="false" />
+            <element signature="n#!!block;n#displayFromGameField#0" expanded="false" />
+            <element signature="n#!!block;n#rewriteHTMLTextGameField#0" expanded="false" />
+            <element signature="n#!!block;n#moveDone#0" expanded="false" />
+            <element signature="n#!!block;n#canBeMerged#0" expanded="false" />
+            <element signature="n#!!block;n#moveStep#0" expanded="false" />
+            <element signature="n#!!block;n#deleteHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveUp#0" expanded="false" />
+            <element signature="n#!!block;n#moveDown#0" expanded="false" />
+            <element signature="n#!!block;n#moveLeft#0" expanded="false" />
+            <element signature="n#!!block;n#moveRight#0" expanded="false" />
+            <element signature="n#!!block;n#refreshScore#0" expanded="false" />
+            <element signature="n#!!block;n#isInGameField#0" expanded="false" />
+            <element signature="n#!!block;n#isWon#0" expanded="false" />
+            <element signature="n#!!block;n#isOver#0" expanded="false" />
+            <element signature="n#!!block;n#getEmptyPositions#0" expanded="false" />
+            <element signature="n#!!block;n#addCellToPosition#0" expanded="false" />
+            <element signature="n#!!block;n#addRandomCell#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -655,7 +747,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+    <entry file="file://$PROJECT_DIR$/js/karma.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -665,7 +757,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.spec.js">
+    <entry file="file://$PROJECT_DIR$/js/game.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
@@ -681,15 +773,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.js">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#initiate#0" expanded="false" />
+            <element signature="n#!!block;n#newGame#0" expanded="false" />
+            <element signature="n#!!block;n#cleanStates#0" expanded="false" />
+            <element signature="n#!!block;n#displayFromGameField#0" expanded="false" />
+            <element signature="n#!!block;n#rewriteHTMLTextGameField#0" expanded="false" />
+            <element signature="n#!!block;n#moveDone#0" expanded="false" />
+            <element signature="n#!!block;n#canBeMerged#0" expanded="false" />
+            <element signature="n#!!block;n#moveStep#0" expanded="false" />
+            <element signature="n#!!block;n#deleteHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveUp#0" expanded="false" />
+            <element signature="n#!!block;n#moveDown#0" expanded="false" />
+            <element signature="n#!!block;n#moveLeft#0" expanded="false" />
+            <element signature="n#!!block;n#moveRight#0" expanded="false" />
+            <element signature="n#!!block;n#refreshScore#0" expanded="false" />
+            <element signature="n#!!block;n#isInGameField#0" expanded="false" />
+            <element signature="n#!!block;n#isWon#0" expanded="false" />
+            <element signature="n#!!block;n#isOver#0" expanded="false" />
+            <element signature="n#!!block;n#getEmptyPositions#0" expanded="false" />
+            <element signature="n#!!block;n#addCellToPosition#0" expanded="false" />
+            <element signature="n#!!block;n#addRandomCell#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+    <entry file="file://$PROJECT_DIR$/js/karma.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -699,7 +813,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.spec.js">
+    <entry file="file://$PROJECT_DIR$/js/game.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -707,15 +821,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.js">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#initiate#0" expanded="false" />
+            <element signature="n#!!block;n#newGame#0" expanded="false" />
+            <element signature="n#!!block;n#cleanStates#0" expanded="false" />
+            <element signature="n#!!block;n#displayFromGameField#0" expanded="false" />
+            <element signature="n#!!block;n#rewriteHTMLTextGameField#0" expanded="false" />
+            <element signature="n#!!block;n#moveDone#0" expanded="false" />
+            <element signature="n#!!block;n#canBeMerged#0" expanded="false" />
+            <element signature="n#!!block;n#moveStep#0" expanded="false" />
+            <element signature="n#!!block;n#deleteHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveUp#0" expanded="false" />
+            <element signature="n#!!block;n#moveDown#0" expanded="false" />
+            <element signature="n#!!block;n#moveLeft#0" expanded="false" />
+            <element signature="n#!!block;n#moveRight#0" expanded="false" />
+            <element signature="n#!!block;n#refreshScore#0" expanded="false" />
+            <element signature="n#!!block;n#isInGameField#0" expanded="false" />
+            <element signature="n#!!block;n#isWon#0" expanded="false" />
+            <element signature="n#!!block;n#isOver#0" expanded="false" />
+            <element signature="n#!!block;n#getEmptyPositions#0" expanded="false" />
+            <element signature="n#!!block;n#addCellToPosition#0" expanded="false" />
+            <element signature="n#!!block;n#addRandomCell#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+    <entry file="file://$PROJECT_DIR$/js/karma.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -725,21 +861,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.spec.js">
+    <entry file="file://$PROJECT_DIR$/js/game.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -751,7 +877,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.spec.js">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!block;n#initiate#0" expanded="false" />
+            <element signature="n#!!block;n#newGame#0" expanded="false" />
+            <element signature="n#!!block;n#cleanStates#0" expanded="false" />
+            <element signature="n#!!block;n#displayFromGameField#0" expanded="false" />
+            <element signature="n#!!block;n#rewriteHTMLTextGameField#0" expanded="false" />
+            <element signature="n#!!block;n#moveDone#0" expanded="false" />
+            <element signature="n#!!block;n#canBeMerged#0" expanded="false" />
+            <element signature="n#!!block;n#moveStep#0" expanded="false" />
+            <element signature="n#!!block;n#deleteHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveHTMLTile#0" expanded="false" />
+            <element signature="n#!!block;n#moveUp#0" expanded="false" />
+            <element signature="n#!!block;n#moveDown#0" expanded="false" />
+            <element signature="n#!!block;n#moveLeft#0" expanded="false" />
+            <element signature="n#!!block;n#moveRight#0" expanded="false" />
+            <element signature="n#!!block;n#refreshScore#0" expanded="false" />
+            <element signature="n#!!block;n#isInGameField#0" expanded="false" />
+            <element signature="n#!!block;n#isWon#0" expanded="false" />
+            <element signature="n#!!block;n#isOver#0" expanded="false" />
+            <element signature="n#!!block;n#getEmptyPositions#0" expanded="false" />
+            <element signature="n#!!block;n#addCellToPosition#0" expanded="false" />
+            <element signature="n#!!block;n#addRandomCell#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
@@ -759,19 +915,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/hammer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.666667">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.js">
+    <entry file="file://$PROJECT_DIR$/js/interaction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86478454">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.886792">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,10 +6,35 @@ var gameField = [
 
 var score = 0;
 var targetNumber = 2048;
-var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
 const NUMBER = 0; // Not a good name for variable, is it?
 const STATE = 1; // If a tile can be modified...
 
+var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
+
+
+
+
+function initiate() {
+    addRandomCell();
+    refreshScore();
+    displayFromGameField();
+}
+
+// restart the game
+function newGame() {
+    for (index = 0; index < gameField.length; index++) {
+        for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
+            gameField[index][insiderIndex][0] = 0;
+        }
+    }
+    var gameFieldElement = document.getElementById("game-field");
+    while (gameFieldElement.firstChild) {
+        gameFieldElement.removeChild(gameFieldElement.firstChild);
+    }
+    score = 0;
+    addRandomCell();
+    refreshScore();
+}
 
 function cleanStates() {
     for (var i = 0; i < gameField.length; i++) {
@@ -55,10 +80,12 @@ function moveDone() {
     rewriteHTMLTextGameField();
 }
 
+
 function canBeMerged(alongsideTile, movedTile) {
     return (alongsideTile[STATE] && movedTile[STATE]) &&
         (alongsideTile[NUMBER] === 0 || alongsideTile[NUMBER] === movedTile[NUMBER]);
 }
+
 
 // Move tile or merge by one step
 function moveStep(alongsideTile, movedTile) {
@@ -76,7 +103,6 @@ function deleteHTMLTile(row, column) {
     $(".cell.row-" + row + ".column-" + column).remove();
 }
 
-
 function moveHTMLTile(row, column, newRow, newColumn, newValue) {
     $(".cell.row-" + row + ".column-" + column).each(function () { // Find all elements at current position
         $(this).removeClass("row-" + row);
@@ -86,7 +112,6 @@ function moveHTMLTile(row, column, newRow, newColumn, newValue) {
         this.firstChild.innerHTML = newValue; // Rewrite value in span
     });
 }
-
 
 function moveUp() {
     for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
@@ -175,22 +200,6 @@ function refreshScore() {
     scoreLabel.innerHTML = score; // Write score
 }
 
-// restart the game
-function newGame() {
-    for (index = 0; index < gameField.length; index++) {
-        for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
-            gameField[index][insiderIndex][0] = 0;
-        }
-    }
-    var gameFieldElement = document.getElementById("game-field");
-    while (gameFieldElement.firstChild) {
-        gameFieldElement.removeChild(gameFieldElement.firstChild);
-    }
-    score = 0;
-    addRandomCell();
-    refreshScore();
-}
-
 // returns if given number is in gamefield
 function isInGameField(number) {
     for (index = 0; index < gameField.length; index++) {
@@ -269,10 +278,4 @@ function addRandomCell() {
 
     refreshScore(); // Refresh displayed gamefield
 
-}
-
-function start() {
-    addRandomCell();
-    refreshScore();
-    displayFromGameField();
 }
