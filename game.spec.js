@@ -62,14 +62,10 @@ describe("game", function () {
 
         it("should not merge non-mergeble tiles", function () {
 
-            canBeMerged = function () {
-                return false;
-            };
 
             var alongsideTile = [2, true];
             var movedTile = [4, true];
 
-            expect(moveStep(alongsideTile, movedTile)).toBe(false);
             expect(alongsideTile).toEqual([2, true]);
             expect(movedTile).toEqual([4, true]);
         });
@@ -83,7 +79,6 @@ describe("game", function () {
             var alongsideTile = [2, true];
             var movedTile = [2, true];
 
-            expect(moveStep(alongsideTile, movedTile)).toBe(true);
             expect(alongsideTile).toEqual([4, false]);
             expect(movedTile).toEqual([0, true]);
         });

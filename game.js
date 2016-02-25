@@ -1,8 +1,8 @@
 var gameField = [
-    [[2, true], [0, true], [0, true], [0, true]],
-    [[2, true], [0, true], [0, true], [0, true]],
-    [[4, true], [0, true], [0, true], [0, true]],
-    [[4, true], [0, true], [0, true], [0, true]]];
+    [[0, true], [0, true], [0, true], [0, true]],
+    [[0, true], [0, true], [0, true], [0, true]],
+    [[0, true], [0, true], [0, true], [0, true]],
+    [[0, true], [0, true], [0, true], [0, true]]];
 
 var score = 0;
 var targetNumber = 2048;
@@ -29,18 +29,8 @@ function displayFromGameField() {
     }
 }
 
-function moveDone() {
-    cleanStates();
-    refreshScore();
-    if (isWon()) {
-        alert("You win this game! :)");
-    } else if (isOver()) {
-        alert("You lose this game! :(");
-    } else {
-        addCell();
-    }
-
-    // HTML rendering
+// HTML rendering
+function rewriteHTMLTextGameField() {
     node = document.getElementById("textField");
     node.innerHTML = "";
     for (index = 0; index < gameField.length; index++) {
@@ -49,7 +39,20 @@ function moveDone() {
         }
         node.innerHTML += gameField[index][gameField[index].length - 1][NUMBER] + "</br>";
     }
+}
 
+function moveDone() {
+
+    cleanStates();
+    refreshScore();
+    if (isWon()) {
+        alert("You win this game! :)");
+    } else if (isOver()) {
+        alert("You lose this game! :(");
+    } else {
+        addRandomCell();
+    }
+    rewriteHTMLTextGameField();
 }
 
 function canBeMerged(alongsideTile, movedTile) {
@@ -86,12 +89,12 @@ function moveHTMLTile(row, column, newRow, newColumn, newValue) {
 
 
 function moveUp() {
-
     for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
         for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
 
             // This loop moving a tile as long as it's possible
             for (var k = i; k > 0; k--) {
+
                 if (canBeMerged(gameField[k - 1][j], gameField[k][j])) {
                     moveStep(gameField[k - 1][j], gameField[k][j]);
                     deleteHTMLTile(k - 1, j);
@@ -108,9 +111,15 @@ function moveUp() {
 function moveDown() {
     for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
         for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+
+            // This loop moving a tile as long as it's possible
             for (var k = i; k < gameField.length - 1; k++) {
 
-                if (!moveStep(gameField[k + 1][j], gameField[k][j])) {
+                if (canBeMerged(gameField[k + 1][j], gameField[k][j])) {
+                    moveStep(gameField[k + 1][j], gameField[k][j]);
+                    deleteHTMLTile(k + 1, j);
+                    moveHTMLTile(k, j, k + 1, j, gameField[k + 1][j][NUMBER]);
+                } else {
                     break;
                 }
 
@@ -123,9 +132,15 @@ function moveDown() {
 function moveLeft() {
     for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
         for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+
+            // This loop moving a tile as long as it's possible
             for (var k = i; k > 0; k--) {
-                refreshScore();
-                if (!moveStep(gameField[j][k - 1], gameField[j][k])) {
+
+                if (canBeMerged(gameField[j][k - 1], gameField[j][k])) {
+                    moveStep(gameField[j][k - 1], gameField[j][k]);
+                    deleteHTMLTile(j, k - 1);
+                    moveHTMLTile(j, k, j, k - 1, gameField[j][k - 1][NUMBER]);
+                } else {
                     break;
                 }
 
@@ -138,9 +153,15 @@ function moveLeft() {
 function moveRight() {
     for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
         for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
+
+            // This loop moving a tile as long as it's possible
             for (var k = i; k < gameField.length - 1; k++) {
 
-                if (!moveStep(gameField[j][k + 1], gameField[j][k])) {
+                if (canBeMerged(gameField[j][k + 1], gameField[j][k])) {
+                    moveStep(gameField[j][k + 1], gameField[j][k]);
+                    deleteHTMLTile(j, k + 1);
+                    moveHTMLTile(j, k, j, k + 1, gameField[j][k + 1][NUMBER]);
+                } else {
                     break;
                 }
 
@@ -148,6 +169,10 @@ function moveRight() {
         }
     }
     moveDone();
+}
+
+function refreshScore() {
+    scoreLabel.innerHTML = score; // Write score
 }
 
 // restart the game
@@ -162,7 +187,7 @@ function newGame() {
         gameFieldElement.removeChild(gameFieldElement.firstChild);
     }
     score = 0;
-    addCell();
+    addRandomCell();
     refreshScore();
 }
 
@@ -228,7 +253,7 @@ function addCellToPosition(x, y, value) {
 }
 
 // Add new number into an empty cell. 2 or 4...
-function addCell() {
+function addRandomCell() {
 
     var emptyPositions = getEmptyPositions();
 
@@ -246,12 +271,8 @@ function addCell() {
 
 }
 
-function refreshScore() {
-    scoreLabel.innerHTML = score; // Write score
-}
-
 function start() {
-    addCell();
+    addRandomCell();
     refreshScore();
     displayFromGameField();
 }
