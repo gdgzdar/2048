@@ -11,9 +11,6 @@ const STATE = 1; // If a tile can be modified...
 
 var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
 
-
-
-
 function initiate() {
     addRandomCell();
     refreshScore();
@@ -36,7 +33,8 @@ function newGame() {
     refreshScore();
 }
 
-function cleanStates() {
+
+function clearStates() {
     for (var i = 0; i < gameField.length; i++) {
         for (var j = 0; j < (gameField[i]).length; j++) {
             gameField[i][j][STATE] = true;
@@ -44,32 +42,12 @@ function cleanStates() {
     }
 }
 
-function displayFromGameField() {
-    for (var i = 0; i < gameField.length; i++) {
-        for (var j = 0; j < (gameField[i]).length; j++) {
-            if (gameField[i][j][NUMBER] !== 0) {
-                addCellToPosition(j, i, gameField[i][j][NUMBER]);
-            }
-        }
-    }
-}
-
-// HTML rendering
-function rewriteHTMLTextGameField() {
-    node = document.getElementById("textField");
-    node.innerHTML = "";
-    for (index = 0; index < gameField.length; index++) {
-        for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
-            node.innerHTML += gameField[index][insiderIndex][NUMBER] + " ,"  //+ "(" + gameField[index][insiderIndex][state] + ") , ";
-        }
-        node.innerHTML += gameField[index][gameField[index].length - 1][NUMBER] + "</br>";
-    }
-}
 
 function moveDone() {
 
-    cleanStates();
+    clearStates();
     refreshScore();
+
     if (isWon()) {
         alert("You win this game! :)");
     } else if (isOver()) {
@@ -80,121 +58,6 @@ function moveDone() {
     rewriteHTMLTextGameField();
 }
 
-
-function canBeMerged(alongsideTile, movedTile) {
-    return (alongsideTile[STATE] && movedTile[STATE]) &&
-        (alongsideTile[NUMBER] === 0 || alongsideTile[NUMBER] === movedTile[NUMBER]);
-}
-
-
-// Move tile or merge by one step
-function moveStep(alongsideTile, movedTile) {
-    if (alongsideTile[NUMBER] !== 0) {
-        alongsideTile[STATE] = false;
-    }
-
-    alongsideTile[NUMBER] += movedTile[NUMBER];
-    movedTile[NUMBER] = 0;
-    score += alongsideTile[NUMBER];
-}
-
-
-function deleteHTMLTile(row, column) {
-    $(".cell.row-" + row + ".column-" + column).remove();
-}
-
-function moveHTMLTile(row, column, newRow, newColumn, newValue) {
-    $(".cell.row-" + row + ".column-" + column).each(function () { // Find all elements at current position
-        $(this).removeClass("row-" + row);
-        $(this).addClass("row-" + (newRow));
-        $(this).removeClass("column-" + column);
-        $(this).addClass("column-" + newColumn);
-        this.firstChild.innerHTML = newValue; // Rewrite value in span
-    });
-}
-
-function moveUp() {
-    for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
-        for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
-
-            // This loop moving a tile as long as it's possible
-            for (var k = i; k > 0; k--) {
-
-                if (canBeMerged(gameField[k - 1][j], gameField[k][j])) {
-                    moveStep(gameField[k - 1][j], gameField[k][j]);
-                    deleteHTMLTile(k - 1, j);
-                    moveHTMLTile(k, j, k - 1, j, gameField[k - 1][j][NUMBER]);
-                } else {
-                    break;
-                }
-            }
-        }
-    }
-    moveDone();
-}
-
-function moveDown() {
-    for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
-        for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
-
-            // This loop moving a tile as long as it's possible
-            for (var k = i; k < gameField.length - 1; k++) {
-
-                if (canBeMerged(gameField[k + 1][j], gameField[k][j])) {
-                    moveStep(gameField[k + 1][j], gameField[k][j]);
-                    deleteHTMLTile(k + 1, j);
-                    moveHTMLTile(k, j, k + 1, j, gameField[k + 1][j][NUMBER]);
-                } else {
-                    break;
-                }
-
-            }
-        }
-    }
-    moveDone();
-}
-
-function moveLeft() {
-    for (var i = 1; i < gameField.length; i++) { // This loop starts on the second row and goes down...
-        for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
-
-            // This loop moving a tile as long as it's possible
-            for (var k = i; k > 0; k--) {
-
-                if (canBeMerged(gameField[j][k - 1], gameField[j][k])) {
-                    moveStep(gameField[j][k - 1], gameField[j][k]);
-                    deleteHTMLTile(j, k - 1);
-                    moveHTMLTile(j, k, j, k - 1, gameField[j][k - 1][NUMBER]);
-                } else {
-                    break;
-                }
-
-            }
-        }
-    }
-    moveDone();
-}
-
-function moveRight() {
-    for (var i = 2; i >= 0; i--) { // This loop starts on the third row and goes up...
-        for (var j = 0; j < (gameField[i]).length; j++) { // This loop starts on the first column and goes right...
-
-            // This loop moving a tile as long as it's possible
-            for (var k = i; k < gameField.length - 1; k++) {
-
-                if (canBeMerged(gameField[j][k + 1], gameField[j][k])) {
-                    moveStep(gameField[j][k + 1], gameField[j][k]);
-                    deleteHTMLTile(j, k + 1);
-                    moveHTMLTile(j, k, j, k + 1, gameField[j][k + 1][NUMBER]);
-                } else {
-                    break;
-                }
-
-            }
-        }
-    }
-    moveDone();
-}
 
 function refreshScore() {
     scoreLabel.innerHTML = score; // Write score
@@ -217,22 +80,25 @@ function isWon() {
     return isInGameField(targetNumber);
 }
 
-// returns if game is over
+// returns if game is over --------------------------------------------------------------------- TODO: not working
 function isOver() {
     if (isInGameField(0)) {
         return false;
     }
 
     else {
-        for (index = 0; index < gameField.length - 1; index++) {
-            for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
-                if (gameField[index][insiderIndex][0] == gameField[index][insiderIndex + 1][0] || gameField[index][insiderIndex][0] == gameField[index + 1][insiderIndex][0]) {
+        for (i = 0; i < gameField.length - 1; i++) {
+            for (j = 0; j < gameField[i].length - 1; j++) {
+
+                if (canBeMerged(gameField[i][j], gameField[i][j + 1]) ||
+                    canBeMerged(gameField[i][j], gameField[i + 1][j])) {
                     return false;
                 }
             }
         }
-        return true;
     }
+
+    return true;
 
 }
 
@@ -252,14 +118,6 @@ function getEmptyPositions() {
     return emptyPositions;
 }
 
-function addCellToPosition(x, y, value) {
-    var cellWrapper = document.createElement("div");
-    var cellText = document.createElement("span");
-    cellText.innerHTML = value;
-    cellWrapper.className = "cell box column-" + x + " row-" + y;
-    cellWrapper.appendChild(cellText);
-    document.getElementById("game-field").appendChild(cellWrapper);
-}
 
 // Add new number into an empty cell. 2 or 4...
 function addRandomCell() {
