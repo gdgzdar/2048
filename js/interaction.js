@@ -1,23 +1,27 @@
 // keys callbacks
 $(function(){
-	$('html').keydown(function(direction) {
-        switch(direction.which) {
-            case 37:
-                moveLeft();
-                break;
+	$('html').keydown(function(e) {
+		switch(e.which) {
+			case 37:
+				e.preventDefault();
+				moveLeft();
+				break;
 
-            case 38:
-                moveUp();
-                break;
+			case 38:
+				e.preventDefault();
+				moveUp();
+				break;
 
-            case 39:
-                moveRight();
-                break;
+			case 39:
+				e.preventDefault();
+				moveRight();
+				break;
 
-            case 40:
-                moveDown();
-                break;
-        }
+			case 40:
+				e.preventDefault();
+				moveDown();
+				break;
+		}
 	});
 });
 
@@ -31,11 +35,11 @@ $(function hammerListener() {
 	mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL});
 
 	mc.on("swipeleft", function(ev) {
-        moveLeft();
+		moveLeft();
 	});
 
 	mc.on("swiperight", function(ev) {
-        moveRight();
+		moveRight();
 	});
 
 	mc.on("swipeup", function(ev) {

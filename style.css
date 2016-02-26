@@ -1,7 +1,7 @@
 /* defaults values */
 
 	body {
-		padding: 3em 0;
+		padding: 5% 0;
 		font-family: 'Open Sans', sans-serif;
 		color: #424242;
 	}
@@ -20,12 +20,14 @@
 	}
 
 	p {
-		text-align: justify;
-		margin: 0;
+		margin: 0 0 .3em;
 	}
+
 /* end of defaults values */
 
+
 /* layout - mobile first */
+
 	#main-content {
 		width: 90vw;
 	}
@@ -41,16 +43,23 @@
 		height: 90vw;
 		max-height: 500px;
 	}
+
 /* end of layout - mobile first*/
 
+
 /* boxes */
+
 	.box {
 		border-radius: 0.2em;
 		overflow: hidden;
 	}
+
+
 /* end of boxes */
 
+
 /* buttons */
+
 	button, .button-like {
  		border: none;
  		height: 2.5em;
@@ -78,9 +87,12 @@
 	.button-like:nth-child(2) {
 		float: right;
 	}
+
 /* end of buttons */
 
+
 /* links */
+
 	a {
 		color: #D2333E;
 		font-weight: bold;
@@ -90,12 +102,15 @@
 	a:hover {
 		color: #9F272F;
 	}
+
 /* end of links */
 
+
 /* game-field */
+
 	#game-field {
-    	position: relative;
-    	margin-bottom: 4%;
+		position: relative;
+		margin-bottom: 4%;
 	}
 
 	.cell {
@@ -105,47 +120,40 @@
 		background-color: #D2333E;
 		color: white;
 		text-align: center;
-	    display: table;
-	    transition: all .2s linear;
+		display: table;
+		transition: all 80ms ease-in-out;
+		z-index: 10;
+		opacity: 0;
+	}
+
+	.cell-pop {
+		z-index: 0;
+		animation: pop 160ms 80ms ease-in-out;
+	}
+
+	@keyframes pop {
+		0% { transition: scale(1); }
+		50% { transform: scale(1.18); color: transparent; }
+		100% { transform: scale(1); }
 	}
 
 	.cell span {
 		display: table-cell;
-	    vertical-align: middle;
+		vertical-align: middle;
 	}
 
-	.column-0 {
-		left: 4%;
-	}
+	.column-0 {	left: 4%; }
+	.column-1 { left: 28%; }
+	.column-2 { left: 52%; }
+	.column-3 { left: 76%; }
 
-	.column-1 {
-		left: 28%;
-	}
+	.row-0 { top: 4%; }
+	.row-1 { top: 28%; }
+	.row-2 { top: 52%; }
+	.row-3 { top: 76%; }
 
-	.column-2 {
-		left: 52%;
-	}
-
-	.column-3 {
-		left: 76%;
-	}
-
-	.row-0 {
-		top: 4%;
-	}
-
-	.row-1 {
-		top: 28%;
-	}
-
-	.row-2 {
-		top: 52%;
-	}
-
-	.row-3 {
-		top: 76%;
-	}
 /* end of game-field */
+
 
 /* responsive */
 
@@ -179,4 +187,5 @@
 			height: 32vw;
 		}
 	}
+
 /* end of responsive 
