@@ -1,0 +1,25 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "Our version of popular game 2048. It was made by GDG Garage Žďár team for educational purposes.",
+  "main": "game.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdgzdar/2048.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gdgzdar/2048/issues"
+  },
+  "homepage": "https://github.com/gdgzdar/2048#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7"
+  }
+}

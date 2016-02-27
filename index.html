@@ -4,50 +4,41 @@
 		<title>2048 by GDG Žďár</title>
 		<meta charset="UTF-8">
 		<meta author="Matěj Horák, Marek Kadlčík">
-		<meta keywords="2048 game, online game, 2048 online, 2048, GDG Žďár nad Sázavou, google developer group, gug.cz">
 		<meta name="viewport" content="width=device-width, initial-scale=0.7">
 
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script type="text/javascript" src="./hammer.js"></script>
-		<script type="text/javascript" src="./interaction.js"></script>
+		<script type="text/javascript" src="js/hammer.js"></script>
+		<script type="text/javascript" src="js/interaction.js"></script>
 
 	</head>
 
 	<body>
 		<section id="main-content">
+
 			<div id="game-field" class="square column box">
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-			
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-			
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-			
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
-				<div class="background-grid-box box"></div>
 			</div>
+
 			<div class="column">
-				<button id="new-game-button" class="box" onclick="newGameButtonClick()">New Game</button>
-				<div id="score" class="button-like box">score<div id="score-inner-value"></div></div>
+				<button id="new-game-button" class="box" onclick="newGame()">New Game</button>
+				<div id="score" class="button-like box">score: <div id="score-inner-value"></div></div>
 				<div id="best" class="button-like box">best<div  id="best-inner-value"></div></div>
-				<p><a href="">Project on GitHub</a></p>
-				<p>Made by Matěj Horák and Marek Kadlčík, 2015</p>
-				<p>No rights reserved</p>
+				<p><a href="https://github.com/gdgzdar/2048">Project on GitHub</a></p>
+				<p>Made by <a href="http://horm.cz" target="_blank">Matěj Horák</a> and <a href="http://marekkadlcik.com" target="_blank">Marek Kadlčík</a>, 2015</p>
+				<p id="textField">No rights reserved</p>
 			</div>
 		</section>
+
+
+		<script type="text/javascript" src="js/render.js"></script>
+		<script type="text/javascript" src="js/movement.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+
+		<script>
+			initiate();
+		</script>
 
 	</body>
 
