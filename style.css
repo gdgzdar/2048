@@ -76,16 +76,13 @@
 	}
 
 	.button-like {
-		width: 44%;
+		width: 100%;
 		padding: 0 0 0 3%;
+		box-sizing: border-box;
 	}
 
 	.button-like div {
 		display: inline-block;
-	}
-
-	.button-like:nth-child(2) {
-		float: right;
 	}
 
 /* end of buttons */

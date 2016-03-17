@@ -1355,8 +1355,8 @@ Recognizer.prototype = {
 
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
         var index = inArray(this.requireFail, otherRecognizer);
-        if (index > -1) {
-            this.requireFail.splice(index, 1);
+        if (i > -1) {
+            this.requireFail.splice(i, 1);
         }
         return this;
     },

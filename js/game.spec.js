@@ -46,14 +46,11 @@ describe("game", function () {
     });
 
     describe("moveStep", function () {
-        var origCanBeMerged;
 
         beforeEach(function () {
-            origCanBeMerged = canBeMerged;
         });
 
         afterEach(function () {
-            canBeMerged = origCanBeMerged;
         });
 
         function checkValuesIsZero(movedTile) {
@@ -61,7 +58,6 @@ describe("game", function () {
         }
 
         it("should not merge non-mergeble tiles", function () {
-
 
             var alongsideTile = [2, true];
             var movedTile = [4, true];
@@ -72,13 +68,10 @@ describe("game", function () {
 
         it("should merge if are mergeble", function () {
 
-            canBeMerged = function () {
-                return true;
-            };
-
             var alongsideTile = [2, true];
             var movedTile = [2, true];
 
+            moveStep(alongsideTile, movedTile);
             expect(alongsideTile).toEqual([4, false]);
             expect(movedTile).toEqual([0, true]);
         });
@@ -86,8 +79,46 @@ describe("game", function () {
 
     });
 
-    /*describe("moveUp", function() {
-        it("should move up ")
+    describe("isOver", function() {
+
+        it("should return false if there is a zero in the gameField", function() {
+            var gameField = [
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]]];
+
+            expect(isOver(gameField)).toBe(false);
+        });
+
+        it("should return false if there are some mergable cells in the gameField", function() {
+            var gameField = [
+                [[1, true], [2, true], [30, true], [40, true]],
+                [[50, true], [60, true], [70, true], [80, true]],
+                [[980, true], [100, true], [110, true], [120, true]],
+                [[90, true], [90, true], [170, true], [180, true]]];
+
+            expect(isOver(gameField)).toBe(false);
+        });
+
+        /*it("should return true if there is a zero in the gameField", function() {
+            var gameField = [
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]],
+                [[0, true], [0, true], [0, true], [0, true]]];
+
+            expect(isOver(gameField)).toBe(false);
+        });
+*/
+    });
+
+
+
+    /*describe("isOver", function() {
+        it("should do moveUp move", function() {
+
+        });
     });*/
 
 });

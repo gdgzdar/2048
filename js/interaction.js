@@ -1,5 +1,5 @@
 // keys callbacks
-$(function(){
+function bindArrows() {
 	$('html').keydown(function(e) {
 		switch(e.which) {
 			case 37:
@@ -23,11 +23,11 @@ $(function(){
 				break;
 		}
 	});
-});
+};
 
 
 // touch devices support
-$(function hammerListener() {
+function bindSwiping() {
 	var options = {
    		touchAction: "pan-x"
 	};
@@ -50,4 +50,4 @@ $(function hammerListener() {
 		moveDown();
 	});
 
-});
+};
