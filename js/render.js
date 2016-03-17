@@ -43,14 +43,19 @@ function moveHTMLTile(row, column, newRow, newColumn, newValue) {
 }
 
 
+function refreshScore() {
+	scoreLabel.innerHTML = score; // Write score
+}
+
+
 // HTML rendering
 function rewriteHTMLTextGameField() {
-	node = document.getElementById("textField");
+	var node = document.getElementById("textField");
 	node.innerHTML = "";
-	for (index = 0; index < gameField.length; index++) {
-		for (insiderIndex = 0; insiderIndex < gameField[index].length - 1; insiderIndex++) {
-			node.innerHTML += gameField[index][insiderIndex][NUMBER] + " ,"  //+ "(" + gameField[index][insiderIndex][state] + ") , ";
+	for (i = 0; i < gameField.length; i++) {
+		for (j = 0; j < gameField[i].length - 1; j++) {
+			node.innerHTML += gameField[i][j][NUMBER] + " ,"  //+ "(" + gameField[index][insiderIndex][state] + ") , ";
 		}
-		node.innerHTML += gameField[index][gameField[index].length - 1][NUMBER] + "</br>";
+		node.innerHTML += gameField[i][gameField[i].length - 1][NUMBER] + "</br>";
 	}
 }

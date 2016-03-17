@@ -1,29 +1,29 @@
+var score = 0;
+const TARGET_NUMBER = 2048;
+const NUMBER = 0; // Not a good name for variable, is it?
+const STATE = 1; // If a tile can be modified...
+
+var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
+
 var gameField = [
     [[0, true], [0, true], [0, true], [0, true]],
     [[0, true], [0, true], [0, true], [0, true]],
     [[0, true], [0, true], [0, true], [0, true]],
     [[0, true], [0, true], [0, true], [0, true]]];
 
-var score = 0;
-var targetNumber = 2048;
-const NUMBER = 0; // Not a good name for variable, is it?
-const STATE = 1; // If a tile can be modified...
-
-var scoreLabel = document.getElementById('score-inner-value'); // Get HTML element
-
 function initiate() {
+
     addRandomCell();
     refreshScore();
     displayFromGameField();
+    bindArrows();
+    bindSwiping();
+
 }
 
-// restart the game
+// restart the game ----------------------------- TODO: NOT WORKING - How to give a parameter
 function newGame() {
-    for (index = 0; index < gameField.length; index++) {
-        for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
-            gameField[index][insiderIndex][0] = 0;
-        }
-    }
+    clearGameField();
     var gameFieldElement = document.getElementById("game-field");
     while (gameFieldElement.firstChild) {
         gameFieldElement.removeChild(gameFieldElement.firstChild);
@@ -42,8 +42,15 @@ function clearStates() {
     }
 }
 
+function clearGameField()  {
+    for (var i = 0; i < gameField.length; i++) {
+        for (var j = 0; j < gameField[i].length; j++) {
+            gameField[i][j][NUMBER] = 0;
+        }
+    }
+}
 
-function moveDone() {
+function moveDone(shouldAddTile) {
 
     clearStates();
     refreshScore();
@@ -52,10 +59,10 @@ function moveDone() {
         alert("You win this game! :)");
     } else if (isOver()) {
         alert("You lose this game! :(");
-    } else {
+    } else if (shouldAddTile) {
         addRandomCell();
     }
-    rewriteHTMLTextGameField();
+    // rewriteHTMLTextGameField();
 }
 
 
@@ -63,11 +70,12 @@ function refreshScore() {
     scoreLabel.innerHTML = score; // Write score
 }
 
+
 // returns if given number is in gamefield
 function isInGameField(number) {
-    for (index = 0; index < gameField.length; index++) {
-        for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
-            if (gameField[index][insiderIndex][0] == number) {
+    for (var i = 0; i < gameField.length; i++) {
+        for (var j = 0; j < gameField[i].length; j++) {
+            if (gameField[i][j][NUMBER] == number) {
                 return true;
             }
         }
@@ -75,12 +83,12 @@ function isInGameField(number) {
     return false;
 }
 
-// returns if game is won
+
 function isWon() {
-    return isInGameField(targetNumber);
+    return isInGameField(TARGET_NUMBER);
 }
 
-// returns if game is over --------------------------------------------------------------------- TODO: not working
+
 function isOver() {
     if (isInGameField(0)) {
         return false;
@@ -88,11 +96,13 @@ function isOver() {
 
     else {
         for (i = 0; i < gameField.length - 1; i++) {
-            for (j = 0; j < gameField[i].length - 1; j++) {
+            for (j = 0; j < gameField[i].length; j++) {
 
-                if (canBeMerged(gameField[i][j], gameField[i][j + 1]) ||
-                    canBeMerged(gameField[i][j], gameField[i + 1][j])) {
+                if (canBeMerged(gameField[i][j], gameField[i + 1][j]) ||
+                    canBeMerged(gameField[j][i], gameField[j][i + 1])) {
+
                     return false;
+
                 }
             }
         }
@@ -108,10 +118,10 @@ function getEmptyPositions() {
     var emptyPositions = [];
 
     // Fill an array with empty cells positions
-    for (index = 0; index < gameField.length; index++) {
-        for (insiderIndex = 0; insiderIndex < gameField[index].length; insiderIndex++) {
-            if (gameField[index][insiderIndex][0] == 0) {
-                emptyPositions.push([index, insiderIndex]);
+    for (i = 0; i < gameField.length; i++) {
+        for (j = 0; j < gameField[i].length; j++) {
+            if (gameField[i][j][NUMBER] == 0) {
+                emptyPositions.push([i, j]);
             }
         }
     }
@@ -132,8 +142,13 @@ function addRandomCell() {
 
     addCellToPosition(positionX, positionY, value);
 
-    gameField[positionY][positionX][0] = value; // Add
+    gameField[positionY][positionX][NUMBER] = value; // Add
 
     refreshScore(); // Refresh displayed gamefield
 
+}
+
+
+function isEmpty(tile) {
+    return tile[NUMBER] === 0;
 }
